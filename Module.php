@@ -22,4 +22,17 @@ class Module extends AbstractModule
     {
         return __NAMESPACE__;
     }
+
+    public function getServiceConfig()
+    {
+        return array(
+            'factories' => array(
+                'crud_db_mapper' => function($sm) {
+                    return new Mapper\DoctrineDb(
+                         $sm->get('doctrine.entitymanager.orm_default')
+                    );
+                }
+            ),
+        );
+    }
 }
