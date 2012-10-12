@@ -24,7 +24,7 @@ class DoctrineDb implements DbMapperInterface
         $this->em = $em;
     }
 
-    public function findAll($where = null, HydratorInterface $hydrator = null) 
+    public function findAll($where = null, HydratorInterface $hydrator = null)
     {
         $er = $this->em->getRepository($this->entityClassName);
         $results = $er->findAll();
@@ -80,7 +80,7 @@ class DoctrineDb implements DbMapperInterface
         $this->entityClassName = $entityClassName;
     }
 
-    public function getEntityClassName() 
+    public function getEntityClassName()
     {
         return $this->entityClassName;
     }
