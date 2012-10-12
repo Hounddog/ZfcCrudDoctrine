@@ -41,9 +41,9 @@ class DoctrineDb implements DbMapperInterface
     public function findById($id)
     {
         $er = $this->em->getRepository($this->entityClassName);
-        $enity = $er->find($id);
+        $entity = $er->find($id);
         if(null === $entity) {
-            throw new Exception\NotFound(
+            throw new \ZfcCrud\Exception\NotFound(
                 'Database record for id ' . $id . ' not found',
                 404
             );
