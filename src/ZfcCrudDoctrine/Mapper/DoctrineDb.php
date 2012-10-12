@@ -46,7 +46,7 @@ class DoctrineDb implements DbMapperInterface
             throw new Exception\NotFound(
                 'Database record for id ' . $id . ' not found',
                 404
-            )
+            );
         }
         return $entity;
     }
