@@ -38,7 +38,7 @@ class DoctrineDb implements DbMapperInterface
         return $results;
     }
 
-    public function findById($id)
+    public function findById($id, HydratorInterface $hydrator = null)
     {
         $er = $this->em->getRepository($this->entityClassName);
         $entity = $er->find($id);
@@ -47,6 +47,9 @@ class DoctrineDb implements DbMapperInterface
                 'Database record for id ' . $id . ' not found',
                 404
             );
+        }
+        if(null !== $hydrator) {
+            $entity = $hydrator->extract($entity);
         }
         return $entity;
     }
